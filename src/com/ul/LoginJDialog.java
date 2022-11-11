@@ -32,8 +32,8 @@ public class LoginJDialog extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtAcc = new javax.swing.JTextField();
+        txtPass = new javax.swing.JPasswordField();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel2 = new javax.swing.JLabel();
@@ -80,13 +80,24 @@ public class LoginJDialog extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
-        jTextField1.setBackground(new java.awt.Color(255, 204, 204));
-        jTextField1.setText("Username");
-        jTextField1.setBorder(null);
+        txtAcc.setBackground(new java.awt.Color(255, 204, 204));
+        txtAcc.setText("Username");
+        txtAcc.setToolTipText("");
+        txtAcc.setBorder(null);
+        txtAcc.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtAccFocusGained(evt);
+            }
+        });
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 204, 204));
-        jPasswordField1.setText("Password");
-        jPasswordField1.setBorder(null);
+        txtPass.setBackground(new java.awt.Color(255, 204, 204));
+        txtPass.setText("Password");
+        txtPass.setBorder(null);
+        txtPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPassFocusGained(evt);
+            }
+        });
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
@@ -102,6 +113,11 @@ public class LoginJDialog extends javax.swing.JDialog {
         btnSign.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnSign.setText("Sign in");
         btnSign.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnSign.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSignMouseClicked(evt);
+            }
+        });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/image/icons8_close_20px.png"))); // NOI18N
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,8 +140,8 @@ public class LoginJDialog extends javax.swing.JDialog {
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1)
+                            .addComponent(txtAcc, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                            .addComponent(txtPass)
                             .addComponent(jSeparator3)
                             .addComponent(jSeparator4))))
                 .addContainerGap(43, Short.MAX_VALUE))
@@ -141,7 +157,7 @@ public class LoginJDialog extends javax.swing.JDialog {
                         .addGap(16, 16, 16)
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
@@ -149,9 +165,9 @@ public class LoginJDialog extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -189,10 +205,41 @@ public class LoginJDialog extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void init() {
+        
+    }
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_btnCloseMouseClicked
+
+    private void btnSignMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSignMouseClicked
+
+    private void txtAccFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtAccFocusGained
+        // TODO add your handling code here:
+        txtAcc.setText("");
+        
+    }//GEN-LAST:event_txtAccFocusGained
+
+    private void txtPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPassFocusGained
+        // TODO add your handling code here:
+        txtPass.setText("");
+
+    }//GEN-LAST:event_txtPassFocusGained
+
+    private void logIn() {
+        
+    }
+    private String checkValidate() {
+        if(txtAcc.getText().equals("") || txtPass.getText().equals("")){
+            String error = "Bạn chưa nhập tài khoản hoặc mật khẩu!";
+            return error;
+        }else {
+            return "";
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -246,9 +293,9 @@ public class LoginJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtAcc;
+    private javax.swing.JPasswordField txtPass;
     // End of variables declaration//GEN-END:variables
 }

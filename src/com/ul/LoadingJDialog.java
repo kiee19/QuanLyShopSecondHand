@@ -39,7 +39,6 @@ public class LoadingJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        
         jPanel1.setBackground(new java.awt.Color(204, 255, 102));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
