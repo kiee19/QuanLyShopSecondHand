@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.ul;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
@@ -13,6 +14,10 @@ import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
 
 import com.utils.TabbedPane;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author korea
@@ -25,6 +30,7 @@ public class ShopJFrame extends javax.swing.JFrame {
     public ShopJFrame() {
         initComponents();
         init();
+        startDongHo();
     }
 
     /**
@@ -42,7 +48,7 @@ public class ShopJFrame extends javax.swing.JFrame {
         pnlHeader = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblClock = new javax.swing.JLabel();
         pnlMenu = new javax.swing.JPanel();
         btnSanPham = new javax.swing.JPanel();
         label2 = new javax.swing.JLabel();
@@ -76,9 +82,9 @@ public class ShopJFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel4.setText("SECONDHAND SHOP");
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/image/icons8_alarm_clock_20px.png"))); // NOI18N
-        jLabel1.setText("Clock");
+        lblClock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblClock.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/image/icons8_alarm_clock_20px.png"))); // NOI18N
+        lblClock.setText("Clock");
 
         javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
@@ -90,7 +96,7 @@ public class ShopJFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         pnlHeaderLayout.setVerticalGroup(
@@ -104,7 +110,7 @@ public class ShopJFrame extends javax.swing.JFrame {
                             .addContainerGap())
                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlHeaderLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblClock, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
 
@@ -320,34 +326,34 @@ public class ShopJFrame extends javax.swing.JFrame {
 
     private void btnKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseClicked
         // TODO add your handling code here:
-        t.changePanel(pnlKhuyenMai,pnlCards);
+        t.changePanel(pnlKhuyenMai, pnlCards);
 
     }//GEN-LAST:event_btnKhuyenMaiMouseClicked
 
     private void btnThemNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemNhanVienMouseClicked
         // TODO add your handling code here:
-        t.changePanel(pnlNhanVien,pnlCards);
-        
+        t.changePanel(pnlNhanVien, pnlCards);
+
 
     }//GEN-LAST:event_btnThemNhanVienMouseClicked
 
     private void btnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseClicked
         // TODO add your handling code here:
-        t.changePanel(pnlSanPham,pnlCards);
-        
+        t.changePanel(pnlSanPham, pnlCards);
+
 
     }//GEN-LAST:event_btnSanPhamMouseClicked
 
     private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
         // TODO add your handling code here:
-        t.changePanel(pnlBanHang,pnlCards);
-        
+        t.changePanel(pnlBanHang, pnlCards);
+
     }//GEN-LAST:event_btnBanHangMouseClicked
 
     private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
         // TODO add your handling code here:
-        t.changePanel(pnlThongKe,pnlCards);
-        
+        t.changePanel(pnlThongKe, pnlCards);
+
 
     }//GEN-LAST:event_btnThongKeMouseClicked
 
@@ -428,19 +434,20 @@ public class ShopJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnThongKeMouseReleased
 
-    Color defaultColor, clickedColor,white;
+    Color defaultColor, clickedColor, white;
     TabbedPane t = new TabbedPane();
+
     private void init() {
         this.setLocationRelativeTo(null);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Rectangle r = this.getBounds();
 
-        Dimension d = new Dimension(pnlMenu.getWidth(),(int)r.getHeight());
+        Dimension d = new Dimension(pnlMenu.getWidth(), (int) r.getHeight());
         pnlMenu.setPreferredSize(d);
-        
-        defaultColor = new Color(255,204,204);
-        clickedColor = new Color(204,255,0);
-        white = new Color(255,255,255);
+
+        defaultColor = new Color(255, 204, 204);
+        clickedColor = new Color(204, 255, 0);
+        white = new Color(255, 255, 255);
 
         taoHoaDon();
     }
@@ -449,9 +456,22 @@ public class ShopJFrame extends javax.swing.JFrame {
         JPopupMenu clickMenu = new JPopupMenu();
         JMenuItem mniTaoHD = new JMenuItem("Tạo hóa đơn");
         clickMenu.add(mniTaoHD);
-        
+
     }
     
+    private void startDongHo () {
+        Thread thread = new Thread(){
+            public void run(){
+                while(true){
+                    Format f = new SimpleDateFormat("hh:mm:ss a");
+                    String strResult = f.format(new Date());
+                    lblClock.setText(strResult);
+                }
+            }
+        };
+        thread.start();
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -495,7 +515,6 @@ public class ShopJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel btnSanPham;
     private javax.swing.JPanel btnThemNhanVien;
     private javax.swing.JPanel btnThongKe;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel label1;
@@ -503,6 +522,7 @@ public class ShopJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel label3;
     private javax.swing.JLabel label4;
     private javax.swing.JLabel label5;
+    private javax.swing.JLabel lblClock;
     private javax.swing.JPanel pnlBackground;
     private com.ul.BanHangPanel pnlBanHang;
     private javax.swing.JPanel pnlCards;
